@@ -38,7 +38,10 @@ if (isset($_SESSION['is_logged']) == 1) {
 }
 
 if ($_POST) {
-
+if (preg_match("/^[a-zA-Zа-яА-Я\ \-`\.]{3,30}$/u", $_POST['username']) === 1) {
     User::setUser();
+}else{
+    echo '<div class="alert alert-danger">Invalid chars!</div>';
+}
 }
 include 'includes/footer.php';
